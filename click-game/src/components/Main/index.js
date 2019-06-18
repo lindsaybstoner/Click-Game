@@ -8,6 +8,15 @@ class Main extends Component {
     state = {
       characters
     };
+
+    getId = (id) => {
+      
+      let idsClicked =[];
+
+      idsClicked.push(id);
+
+      console.log(idsClicked)
+    };
   
     // Map over this.state.characters and render a FriendCard component for each friend object
     render() {
@@ -19,6 +28,7 @@ class Main extends Component {
               key={character.id}
               name={character.name}
               image={character.image}
+              getId={this.getId}
             />
           ))}
         </main>
