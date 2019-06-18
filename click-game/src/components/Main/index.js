@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
+import ImageCard from "../ImageCard";
 import "./style.css";
-import characters from "./characters.json";
+import characters from "../../characters.json";
 
 class Main extends Component {
     // Setting this.state.characters to the characters json array
@@ -11,16 +12,16 @@ class Main extends Component {
     // Map over this.state.characters and render a FriendCard component for each friend object
     render() {
       return (
-        <Main>
+        <main>
           {this.state.characters.map(character => (
-            <FriendCard
+            <ImageCard
               id={character.id}
               key={character.id}
               name={character.name}
               image={character.image}
             />
           ))}
-        </Main>
+        </main>
       );
     }
   }

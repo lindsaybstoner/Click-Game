@@ -11,8 +11,7 @@ ul {
     display: flex;
     justify-content: space-around;
     padding-left: 0px;
-    padding: 10px;
-    font-size: 18px;
+    font-size: calc(10px + 14 * (100vw - 320px)/ 800);
     font-weight: 600;
 }
 
