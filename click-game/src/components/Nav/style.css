@@ -1,0 +1,20 @@
+nav {
+    position: fixed;
+    background: #5133a3;
+    width: 100%;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    color: white;
+    top: 0;
+}
+
+ul {
+    display: flex;
+    justify-content: space-around;
+    padding-left: 0px;
+    padding: 10px;
+}
+
+li {
+    padding: 0px 10px;
+    list-style: none;
+}
