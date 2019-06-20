@@ -6,7 +6,6 @@ const ImageCard = (props) => {
     <div className="card">
       <span onClick={() => {
         props.handleIncrement(props.id)
-        /* props.handleHighestScore() */
         props.getId(props.id)
         props.shuffle(props.character)
       }}>

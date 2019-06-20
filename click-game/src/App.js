@@ -29,6 +29,7 @@ class App extends Component {
 
 		if (!this.state.idsClicked.includes(id)) {
 			this.setState({ currentScore: this.state.currentScore + 1 });
+
 			if (this.state.currentScore >= this.state.highestScore) {
 				this.setState({ highestScore: this.state.currentScore });
 			}
@@ -38,13 +39,7 @@ class App extends Component {
 		
 	};
 
-	/* handleHighestScore = () => {
-		if (this.state.currentScore >= this.state.highestScore) {
-			this.setState({ highestScore: this.state.currentScore });
-		}
-	} */
-
-	shuffle = (id) => {
+	shuffle = () => {
 		let characters = this.state.characters;
 		
 		//update with random array
@@ -81,8 +76,6 @@ class App extends Component {
 		);
 	}
 }
-
-
 
 
 export default App;
