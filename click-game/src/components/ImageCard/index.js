@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 
-function ImageCard(props) {
+const ImageCard = (props) => {
   return (
     <div className="card">
       <span onClick={() => props.getId(props.id)}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import "./style.css";
 
-function Footer () {
+const Footer = () => {
     return (
        <footer>
            <div className="footer-text">Clicky Game</div>

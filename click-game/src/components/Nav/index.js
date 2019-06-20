@@ -1,13 +1,13 @@
 import React from 'react';
 import "./style.css";
 
-function Nav () {
+const Nav = (props) => {
     return (
         <nav>
             <ul>
                 <li>Clicky Game</li>
-                <li>Click an image to begin!</li>
-                <li>Score: | Top Score: </li>
+                <li>{props.heading}</li>
+                <li>Score: {props.currentScore} | Top Score: {props.highestScore}</li>
             </ul>
         </nav>
     )
