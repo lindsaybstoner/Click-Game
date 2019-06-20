@@ -40,24 +40,14 @@ class App extends Component {
 		}
 	}
 
-	shuffle = (characters) => {
-		var currentIndex = this.state.characters.length, temporaryValue, randomIndex;
-
-		// While there remain elements to shuffle...
-		while (0 !== currentIndex) {
-
-			// Pick a remaining element...
-			randomIndex = Math.floor(Math.random() * currentIndex);
-			currentIndex -= 1;
-
-			// And swap it with the current element.
-			temporaryValue = characters[currentIndex];
-			characters[currentIndex] = characters[randomIndex];
-			characters[randomIndex] = temporaryValue;
-		}
-
-		return this.setState({ characters });
+	shuffle = (id) => {
+		let characters = this.state.characters;
+		
+		//update with random array
+		characters.sort(function (a, b) { return 0.5 - Math.random() });
+		this.setState({ characters });
 	}
+
 
 	render() {
 		return (
