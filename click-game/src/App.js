@@ -14,31 +14,35 @@ class App extends Component {
 		currentScore: 0,
 		highestScore: 0,
 		heading: '',
+		idsClicked: [],
 	}
 
 	getId = (id) => {
-		let idsClicked = [];
-		idsClicked.push(id);
-		console.log(idsClicked)
+		let imgClicked = this.state.idsClicked.concat(id);
+		console.log(imgClicked)
 
-		this.setState({});
+		this.setState({ idsClicked : imgClicked });
 	};
 
 	// handleIncrement increases this.state.count by 1
-	handleIncrement = () => {
-		// We always use the setState method to update a component's state
-		this.setState({ currentScore: this.state.currentScore + 1 });
+	handleIncrement = (id) => {
 
-		/* if (this.state.currentScore >= this.state.highestScore) {
-			this.setState({ highestScore: this.state.currentScore });
-		} */
+		if (!this.state.idsClicked.includes(id)) {
+			this.setState({ currentScore: this.state.currentScore + 1 });
+			if (this.state.currentScore >= this.state.highestScore) {
+				this.setState({ highestScore: this.state.currentScore });
+			}
+		} else {
+			this.setState({ currentScore: 0 });
+		}
+		
 	};
 
-	handleHighestScore = () => {
+	/* handleHighestScore = () => {
 		if (this.state.currentScore >= this.state.highestScore) {
 			this.setState({ highestScore: this.state.currentScore });
 		}
-	}
+	} */
 
 	shuffle = (id) => {
 		let characters = this.state.characters;
