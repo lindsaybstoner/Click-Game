@@ -8,10 +8,12 @@ To use the app go to
 * [Heroku](https://heroku.com) - Hosting and deployment 
 * [Javascript](https://www.javascript.com/) - front end programming language
 * [React](https://reactjs.org/) - JavaScript library for building user interfaces
+* [Create React App](https://facebook.github.io/create-react-app/docs/getting-started) - a modern build setup with no configuration
 
 
 ## Authors
 * **Lindsay Stoner** - [lindsaybstoner](https://github.com/lindsaybstoner)
 
 ## Acknowledgments
-* Template from Trilogy education services 
+* Template from Create React App
+* Assignment instructions from Trilogy education services 
