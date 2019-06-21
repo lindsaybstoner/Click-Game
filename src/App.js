@@ -14,27 +14,30 @@ class App extends Component {
 		currentScore: 0,
 		highestScore: 0,
 		heading: '',
-		idsClicked: [],
+		clicked: false,
 	}
 
-	getId = (id) => {
+/* 	getId = (id) => {
 		let imgClicked = this.state.idsClicked.concat(id);
 		console.log(imgClicked)
 
 		this.setState({ idsClicked : imgClicked });
-	};
+	}; */
 
 	// handleIncrement increases this.state.count by 1
 	handleIncrement = (id) => {
+		this.setState({ clicked: true });
+		
+		if (this.state.clicked) {
+			this.setState({ currentScore: this.state.currentScore + 1, heading: "You guessed correctly!" });
 
-		if (!this.state.idsClicked.includes(id)) {
-			this.setState({ currentScore: this.state.currentScore + 1 });
-
-			if (this.state.currentScore >= this.state.highestScore) {
+			if (this.state.currentScore > this.state.highestScore) {
 				this.setState({ highestScore: this.state.currentScore });
 			}
+			
 		} else {
-			this.setState({ currentScore: 0 });
+			this.setState({ idsClicked: [], currentScore: 0, heading: "You guessed incorrectly!" });
+			/* console.log(this.state.idsClicked); */
 		}
 		
 	};
@@ -49,6 +52,7 @@ class App extends Component {
 
 
 	render() {
+		console.log(this.state.idsClicked);
 		return (
 			<>
 				<Nav
@@ -68,6 +72,7 @@ class App extends Component {
 							handleIncrement={this.handleIncrement}
 							handleHighestScore={this.handleHighestScore}
 							shuffle={this.shuffle}
+							clicked={this.clicked}
 						/>
 					))}
 				</Main>

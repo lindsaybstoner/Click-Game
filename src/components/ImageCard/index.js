@@ -6,8 +6,9 @@ const ImageCard = (props) => {
     <div className="card">
       <span onClick={() => {
         props.handleIncrement(props.id)
-        props.getId(props.id)
+        /* props.getId(props.id) */
         props.shuffle(props.character)
+        /* props.clicked() */
       }}>
         <img alt={props.name} src={props.image} />
       </span>
