@@ -14,7 +14,7 @@ class App extends Component {
 		currentScore: 0,
 		highestScore: 0,
 		heading: '',
-		clicked: false,
+		/* clicked: false, */
 	}
 
 /* 	getId = (id) => {
@@ -24,9 +24,12 @@ class App extends Component {
 		this.setState({ idsClicked : imgClicked });
 	}; */
 
-	// handleIncrement increases this.state.count by 1
-	handleIncrement = (id) => {
+	whenClicked = () => {
 		this.setState({ clicked: true });
+	}
+
+	// handleIncrement increases this.state.count by 1
+	handleIncrement = () => {
 		
 		if (this.state.clicked) {
 			this.setState({ currentScore: this.state.currentScore + 1, heading: "You guessed correctly!" });
@@ -52,7 +55,7 @@ class App extends Component {
 
 
 	render() {
-		console.log(this.state.idsClicked);
+		/* console.log(this.state.idsClicked); */
 		return (
 			<>
 				<Nav
@@ -68,11 +71,11 @@ class App extends Component {
 							key={character.id}
 							name={character.name}
 							image={character.image}
+							whenClicked={this.whenClicked}
 							getId={this.getId}
 							handleIncrement={this.handleIncrement}
 							handleHighestScore={this.handleHighestScore}
 							shuffle={this.shuffle}
-							clicked={this.clicked}
 						/>
 					))}
 				</Main>

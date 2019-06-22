@@ -8,9 +8,9 @@ const ImageCard = (props) => {
         props.handleIncrement(props.id)
         /* props.getId(props.id) */
         props.shuffle(props.character)
-        /* props.clicked() */
+        props.whenClicked()
       }}>
-        <img alt={props.name} src={props.image} />
+        <img alt={props.name} src={props.image}/>
       </span>
     </div>
   );
