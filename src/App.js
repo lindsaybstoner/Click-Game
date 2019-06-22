@@ -14,48 +14,64 @@ class App extends Component {
 		currentScore: 0,
 		highestScore: 0,
 		heading: '',
-		/* clicked: false, */
+
 	}
 
-/* 	getId = (id) => {
-		let imgClicked = this.state.idsClicked.concat(id);
-		console.log(imgClicked)
+	handleCharacterClick = (id) => {
 
-		this.setState({ idsClicked : imgClicked });
-	}; */
 
-	whenClicked = () => {
-		this.setState({ clicked: true });
-	}
+		console.log(id);
 
-	// handleIncrement increases this.state.count by 1
-	handleIncrement = () => {
+		let newCharArray = this.state.characters;
 		
-		if (this.state.clicked) {
-			this.setState({ currentScore: this.state.currentScore + 1, heading: "You guessed correctly!" });
-
-			if (this.state.currentScore > this.state.highestScore) {
-				this.setState({ highestScore: this.state.currentScore });
+		for(let i = 0; i < newCharArray.length; i++){
+			if (newCharArray[i].id === id){
+				if (newCharArray[i].clicked){
+					this.handleIncorrectGuess()
+				} 
+				else {
+					newCharArray[i].clicked = true;
+					this.handleCorrentGuess(newCharArray)
+				}
+				
 			}
-			
-		} else {
-			this.setState({ idsClicked: [], currentScore: 0, heading: "You guessed incorrectly!" });
-			/* console.log(this.state.idsClicked); */
 		}
-		
+
 	};
 
-	shuffle = () => {
-		let characters = this.state.characters;
+	handleIncorrectGuess = () => {
+		this.setState({ 
+			characters: characters, 
+			currentScore: 0, 
+			heading: "You guessed incorrectly!" 
+		});
+	}
+
+	handleCorrentGuess = (characterArray) => {
+		let newCurrentScore = this.state.currentScore + 1;
 		
-		//update with random array
+		let newHighScore = this.state.highestScore;
+		
+		if(newCurrentScore > this.state.highestScore) {
+			newHighScore = newCurrentScore;
+		}
+		
+		this.setState({ 
+			characters: characterArray, 
+			currentScore: newCurrentScore, 
+			highestScore: newHighScore,
+			heading: "You guessed correctly!"
+		});
+	}
+
+	shuffle = (characters) => {
+
 		characters.sort(function (a, b) { return 0.5 - Math.random() });
-		this.setState({ characters });
 	}
 
 
 	render() {
-		/* console.log(this.state.idsClicked); */
+
 		return (
 			<>
 				<Nav
@@ -72,7 +88,7 @@ class App extends Component {
 							name={character.name}
 							image={character.image}
 							whenClicked={this.whenClicked}
-							getId={this.getId}
+							handleCharacterClick={this.handleCharacterClick}
 							handleIncrement={this.handleIncrement}
 							handleHighestScore={this.handleHighestScore}
 							shuffle={this.shuffle}
