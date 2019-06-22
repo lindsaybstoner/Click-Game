@@ -22,51 +22,54 @@ class App extends Component {
 
 		console.log(id);
 
-		let newCharArray = this.state.characters;
-		
-		for(let i = 0; i < newCharArray.length; i++){
-			if (newCharArray[i].id === id){
-				if (newCharArray[i].clicked){
+		let newCharArray = this.shuffle(this.state.characters);
+
+		for (let i = 0; i < newCharArray.length; i++) {
+			if (newCharArray[i].id === id) {
+				if (newCharArray[i].clicked) {
 					this.handleIncorrectGuess()
-				} 
+				}
 				else {
 					newCharArray[i].clicked = true;
 					this.handleCorrentGuess(newCharArray)
 				}
-				
+
 			}
 		}
 
 	};
 
 	handleIncorrectGuess = () => {
-		this.setState({ 
-			characters: characters, 
-			currentScore: 0, 
-			heading: "You guessed incorrectly!" 
+		this.setState({
+			characters: characters,
+			currentScore: 0,
+			heading: "You guessed incorrectly!"
 		});
 	}
 
 	handleCorrentGuess = (characterArray) => {
 		let newCurrentScore = this.state.currentScore + 1;
-		
+
 		let newHighScore = this.state.highestScore;
-		
-		if(newCurrentScore > this.state.highestScore) {
+
+		if (newCurrentScore > this.state.highestScore) {
 			newHighScore = newCurrentScore;
 		}
-		
-		this.setState({ 
-			characters: characterArray, 
-			currentScore: newCurrentScore, 
+
+		this.setState({
+			characters: characterArray,
+			currentScore: newCurrentScore,
 			highestScore: newHighScore,
 			heading: "You guessed correctly!"
 		});
 	}
 
-	shuffle = (characters) => {
-
-		characters.sort(function (a, b) { return 0.5 - Math.random() });
+	shuffle = (arr) => {
+		for (let i = arr.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[arr[i], arr[j]] = [arr[j], arr[i]];
+		}
+		return arr;
 	}
 
 
